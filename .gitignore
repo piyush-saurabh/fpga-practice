@@ -1,0 +1,4 @@
+# FPGA build artifacts
+*.asc
+*.bin
+*.json

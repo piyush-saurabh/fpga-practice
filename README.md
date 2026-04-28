@@ -18,7 +18,7 @@ Supported boards include (but are not limited to):
 * Other FPGA platforms as added over time
 
 
-## ⚙️ Workflow
+## Workflow
 
 A typical FPGA workflow followed in this repo:
 

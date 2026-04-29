@@ -28,10 +28,10 @@ sudo apt install -y \
 
 ```bash
 # build the project
-make DIR=1-start FILE=Switches_To_LEDs.v build
+make DIR=1-start build
 
 # flash the project to goboard
-make DIR=1-start FILE=Switches_To_LEDs.v build
+make DIR=1-start flash
 ```
 
 **Manual**

@@ -21,7 +21,7 @@ $(JSON): $(DIR)/$(FILE)
 	yosys -p "synth_ice40 -top $(TOP) -json $(JSON)" $(DIR)/$(FILE)
 
 $(ASC): $(JSON)
-	nextpnr-ice40 --hx1k --package vq100 --json $(JSON) --pcf pins.pcf --asc $(ASC)
+	nextpnr-ice40 --hx1k --package vq100 --freq 25 --json $(JSON) --pcf pins.pcf --asc $(ASC)
 
 $(BIN): $(ASC)
 	icepack $(ASC) $(BIN)

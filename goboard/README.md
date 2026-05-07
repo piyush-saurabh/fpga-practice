@@ -40,8 +40,8 @@ make DIR=1-start flash
 # synthesis
 yosys -p "synth_ice40 -top top -json top.json" top.v
 
-# place and route
-nextpnr-ice40 --hx1k --package vq100 --json top.json --pcf pins.pcf --asc top.asc
+# place and route (goboard has clock frequency of 25 MHz; FPGA package is of type vq100)
+nextpnr-ice40 --hx1k --package vq100 --freq 25 --json top.json --pcf pins.pcf --asc top.asc
 
 # generate bitstream
 icepack top.asc top.bin
@@ -56,7 +56,7 @@ iceprog top.bin
 yosys -p "synth_ice40 -top Switches_To_LEDs -json 1-start/Switches_To_LEDs.json" 1-start/Switches_To_LEDs.v
 
 # place and route
-nextpnr-ice40 --hx1k --package vq100 --json 1-start/Switches_To_LEDs.json --pcf pins.pcf --asc 1-start/Switches_To_LEDs.asc
+nextpnr-ice40 --hx1k --package vq100 --freq 25 --json 1-start/Switches_To_LEDs.json --pcf pins.pcf --asc 1-start/Switches_To_LEDs.asc
 
 # generate bitstream
 icepack 1-start/Switches_To_LEDs.asc 1-start/Switches_To_LEDs.bin

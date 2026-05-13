@@ -64,7 +64,7 @@ iceprog top.bin
 ```
 
 
-**Manual**
+**Example 1: Single File**
 ```bash
 yosys -p "synth_ice40 -top Switches_To_LEDs -json 1-start/Switches_To_LEDs.json" 1-start/Switches_To_LEDs.v
 
@@ -76,6 +76,28 @@ icepack 1-start/Switches_To_LEDs.asc 1-start/Switches_To_LEDs.bin
 
 # program
 iceprog 1-start/Switches_To_LEDs.bin
+```
+
+**Example 2: Multiple Files**
+
+```bash
+# synthesis
+yosys -p "synth_ice40 -top Debounce_Project_Top -json 4_debounce_switch/Debounce_Project_Top.json" \
+  4_debounce_switch/Debounce_Project_Top.v \
+  4_debounce_switch/Debounce_Filter.v \
+  4_debounce_switch/LED_Toggle_Project.v
+
+# place and route
+nextpnr-ice40 --hx1k --package vq100 --freq 25 \
+  --json 4_debounce_switch/Debounce_Project_Top.json \
+  --pcf pins.pcf \
+  --asc 4_debounce_switch/Debounce_Project_Top.asc
+
+# generate bitstream
+icepack 4_debounce_switch/Debounce_Project_Top.asc 4_debounce_switch/Debounce_Project_Top.bin
+
+# flash
+iceprog 4_debounce_switch/Debounce_Project_Top.bin
 ```
 
 ## Development

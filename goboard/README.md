@@ -26,6 +26,7 @@ sudo apt install -y \
 
 **Makefile**
 
+Building project with single verilog file
 ```bash
 # build the project
 make DIR=1-start build
@@ -33,6 +34,18 @@ make DIR=1-start build
 # flash the project to goboard
 make DIR=1-start flash
 ```
+
+Building project with multiple verilog file split into modules
+```bash
+# synthesis + place & route
+# specify the top level module
+make DIR=4_debounce_switch TOP=Debounce_Project_Top build
+
+# flash
+make DIR=4_debounce_switch TOP=Debounce_Project_Top flash
+
+```
+
 
 **Manual**
 
